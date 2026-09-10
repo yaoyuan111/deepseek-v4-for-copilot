@@ -19,21 +19,8 @@ type Translations = Record<string, string>;
 
 const zh: Translations = {
 	// Model descriptions
-	'model.deepseek-flash.detail': '图像理解与思考模式',
-	'model.deepseek-flash.tooltip': 'DeepSeek V4.1 Flash，支持图片与文本输入、思考模式和工具调用。',
-	'model.retirement.custom':
-		'**旧模型入口。**  \n请先确认服务商支持 DeepSeek V4.1 Flash。  \n选择“DeepSeek V4.1 Flash”以使用新模型。',
-	'model.retirement.flashRetired':
-		'**已下线。**  \n请求由 DeepSeek V4.1 Flash 提供服务，并按 Flash 价格计费。  \n选择“DeepSeek V4.1 Flash”以使用新模型。',
-	'model.retirement.proPending':
-		'**将于 2026-09-14 12:00（北京时间）下线。**  \n之后请求路由到 DeepSeek V4.1 Flash，并按 V4.1 Flash 价格计费，直至 V4.1 Pro 上线。  \n选择“DeepSeek V4.1 Flash”以使用新模型。',
-	'model.retirement.proRetired':
-		'**已下线。**  \n请求路由到 DeepSeek V4.1 Flash，并按 V4.1 Flash 价格计费，直至 V4.1 Pro 上线。  \n选择“DeepSeek V4.1 Flash”以使用新模型。',
-	'model.flash.detail': '快速高效',
-	'model.pro.detail': '深度推理',
-	'model.flash-vision-exp.detail': '原生视觉实验模型',
-	'model.flash.tooltip': '快速高效的 DeepSeek V4 模型，推理能力接近 V4 Pro，API 定价更经济。',
-	'model.pro.tooltip': 'DeepSeek V4 模型，面向 Agent 编程、广泛世界知识和高阶推理任务。',
+	'model.flash-vision-exp.detail': 'Personal-AI - 原生视觉与思考模式',
+	'model.flash-vision-exp.tooltip': 'Personal-AI 本地模型，支持图片与文本输入、思考模式和工具调用。',
 	'model.pricing.currentPeak': '高峰时段',
 	'model.pricing.currentOffPeak': '空闲时段',
 	'model.pricing.inputLabel': '输入',
@@ -44,7 +31,6 @@ const zh: Translations = {
 	'model.pricing.transitionTime.today': '{0}',
 	'model.pricing.transitionTime.tomorrow': '明天 {0}',
 	'model.pricing.transitionTime.weekday': '{0} {1}',
-	'model.flash-vision-exp.tooltip': 'DeepSeek V4 Flash 视觉实验模型，支持原生图片与文本输入。',
 
 	// API Key
 	'auth.apiKeyRequiredDetail': '请先配置 API Key',
@@ -231,24 +217,9 @@ const zh: Translations = {
 
 const en: Translations = {
 	// Model descriptions
-	'model.deepseek-flash.detail': 'Vision and thinking mode',
-	'model.deepseek-flash.tooltip':
-		'DeepSeek V4.1 Flash with image and text input, thinking mode, and tool calling.',
-	'model.retirement.custom':
-		'**Legacy model entry.**  \nCheck that your provider supports DeepSeek V4.1 Flash.  \nSelect “DeepSeek V4.1 Flash” to use the new model.',
-	'model.retirement.flashRetired':
-		'**Retired.**  \nRequests are served by DeepSeek V4.1 Flash and billed at the Flash price.  \nSelect “DeepSeek V4.1 Flash” to use the new model.',
-	'model.retirement.proPending':
-		'**Retires Sep 14, 2026 at 12:00 UTC+8.**  \nThen requests are routed to DeepSeek V4.1 Flash and billed at the V4.1 Flash price until V4.1 Pro is released.  \nSelect “DeepSeek V4.1 Flash” to use the new model.',
-	'model.retirement.proRetired':
-		'**Retired.**  \nRequests are routed to DeepSeek V4.1 Flash and billed at the V4.1 Flash price until V4.1 Pro is released.  \nSelect “DeepSeek V4.1 Flash” to use the new model.',
-	'model.flash.detail': 'Fast, general-purpose model',
-	'model.pro.detail': 'Most capable reasoning model',
-	'model.flash-vision-exp.detail': 'Experimental native vision model',
-	'model.flash.tooltip':
-		'Fast, efficient DeepSeek V4 model with reasoning close to V4 Pro and economical API pricing.',
-	'model.pro.tooltip':
-		'DeepSeek V4 model for agentic coding, broad world knowledge, and high-end reasoning.',
+	'model.flash-vision-exp.detail': 'Personal-AI with native vision and thinking mode',
+	'model.flash-vision-exp.tooltip':
+		'Personal-AI local model with image and text input, thinking mode, and tool calling.',
 	'model.pricing.currentPeak': 'Peak',
 	'model.pricing.currentOffPeak': 'Off-peak',
 	'model.pricing.inputLabel': 'Input',
@@ -259,8 +230,6 @@ const en: Translations = {
 	'model.pricing.transitionTime.today': 'at {0}',
 	'model.pricing.transitionTime.tomorrow': 'tomorrow at {0}',
 	'model.pricing.transitionTime.weekday': 'on {0} at {1}',
-	'model.flash-vision-exp.tooltip':
-		'Experimental DeepSeek V4 Flash vision model with native image and text input.',
 
 	// API Key
 	'auth.apiKeyRequiredDetail': 'Please run DeepSeek: Set API Key to configure.',

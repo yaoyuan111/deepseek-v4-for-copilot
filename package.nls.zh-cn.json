@@ -27,10 +27,7 @@
   "deepseek-copilot.config.debugMode.verbose.label": "详细",
   "deepseek-copilot.config.debugMode.verbose.description": "⚠️ 包含敏感的提示词内容，仅供本地调试。",
   "deepseek-copilot.config.modelIdOverrides.description": "覆盖各 DeepSeek 模型实际使用的 API 模型 ID，默认使用官方 DeepSeek ID，仅在对接不同模型名称的第三方 API 时需要修改。",
-  "deepseek-copilot.config.modelIdOverrides.deepseek-flash.description": "DeepSeek V4.1 Flash 对应的 API 模型 ID",
-  "deepseek-copilot.config.modelIdOverrides.deepseek-v4-flash.description": "DeepSeek V4 Flash 的 API 模型 ID。",
-  "deepseek-copilot.config.modelIdOverrides.deepseek-v4-pro.description": "DeepSeek V4 Pro 的 API 模型 ID。",
-  "deepseek-copilot.config.modelIdOverrides.deepseek-v4-flash-vision-exp.description": "DeepSeek V4 Flash Vision Exp 的 API 模型 ID。",
+  "deepseek-copilot.config.modelIdOverrides.deepseek-v4-flash-vision-exp.description": "Personal-AI（DeepSeek V4 Flash Vision Exp）对应的 API 模型 ID",
   "deepseek-copilot.config.visionModel.description": "DeepSeek V4 Flash 和 Pro 使用的视觉代理。未设置时，自动模式会在可用时选择 DeepSeek V4 Flash Vision Exp。可通过[配置视觉代理](command:deepseek-copilot.setVisionModel)改用其他 VS Code 模型或 API 端点。",
   "deepseek-copilot.config.visionPrompt.description": "旧 V4 Flash 和 Pro 入口的视觉代理用于描述图片附件的提示词，不影响 V4.1 Flash 或 Flash Vision Exp 的原生图片请求。\n\n[配置视觉代理](command:deepseek-copilot.setVisionModel)"
 }
