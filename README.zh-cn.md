@@ -167,6 +167,46 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
 
 然后在命令面板运行 **`DeepSeek: 设置 API Key`**，输入你的服务商 API Key 即可。
 
+## 更改点与注意点（2026-09-11 汇总）
+
+> 以下记录个人化改造过程中的关键更改与使用注意事项。
+
+### 关键更改
+
+| 版本/提交 | 更改内容 |
+|---|---|
+| `13831c1` | 模型列表精简为单一 `Personal-AI`（`deepseek-v4-flash-vision-exp`）；启用原生视觉；移除退役提示；README 增加致谢 |
+| `5e24e54` | `publisher` 改为 `yaoyuan111`；`repository` 指向个人仓库；`WALKTHROUGH_ID` 同步 |
+| `565fe5f` | README 中英文切换链接指向个人仓库 |
+| `93a78f4` | 扩展标识个人化：`name=personal-ai-copilot`、`displayName=Personal-AI for Copilot Chat` |
+| `cb6ecca` | **配置键彻底隔离**：`deepseek-copilot.*` → `personal-ai.*`（配置/命令/密钥/i18n key/vendor 全部） |
+
+### 重要注意点
+
+1. **配置前缀已改为 `personal-ai.*`**
+   - 在 VS Code 设置中搜索 `personal-ai`（不是 `deepseek-copilot`）
+   - 命令面板中的命令已变为 **`Personal-AI: Set API Key`**（而非 `DeepSeek: Set API Key`）
+   - 与原作者 `Vizards` 版完全隔离，可共存互不干扰
+
+2. **配置示例**
+   ```jsonc
+   {
+     "personal-ai.baseUrl": "https://your-endpoint/v1",       // 自建端点
+     "personal-ai.modelIdOverrides": {
+       "deepseek-v4-flash-vision-exp": "deepseek-v4-flash-vision-exp"
+     }
+   }
+   ```
+
+3. **打包注意点（Windows）**
+   - 项目路径**不能含中文**（如 `G:\文档\...`），否则 vsce 的 glob 会把目录当文件，报 `not a file: out/client`。请在 **ASCII 路径**（如 `G:\deepseek-build`）下打包，再复制 `.vsix` 回来
+   - `@vscode/vsce` 需 **≥ 3.9.2**（3.9.1 有目录收集 bug）
+   - 本地打包建议加 `--allow-package-all-secrets --allow-package-env-file` 绕过 secretlint 的 Windows EISDIR 问题
+   - 本地打包时需临时将 `vscode:prepublish` 从 bash 版改为 `npm run compile`（Windows 无 bash），打包后恢复
+
+4. **模型 ID 预留说明**
+   - 模型 `id` 仍为 `deepseek-v4-flash-vision-exp`（与 vLLM 实际模型名一致，请勿修改，除非对接的第三方 API 模型名不同才需通过 `personal-ai.modelIdOverrides` 覆盖）
+
 ## 许可证
 
 [MIT](LICENSE)

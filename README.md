@@ -167,6 +167,46 @@ Example `settings.json` override for compatible API proxies:
 
 然后在命令面板运行 **`DeepSeek: Set API Key`**，输入你的服务商 API Key 即可。
 
+## Changes & Notes (2026-09-11 summary)
+
+> Key changes and usage notes from the personalization work.
+
+### Key changes
+
+| Commit | Change |
+|---|---|
+| `13831c1` | Model list trimmed to a single `Personal-AI` (`deepseek-v4-flash-vision-exp`); native vision enabled; retirement notices removed; README acknowledgements added |
+| `5e24e54` | `publisher` changed to `yaoyuan111`; `repository` points to personal repo; `WALKTHROUGH_ID` synced |
+| `565fe5f` | README language-switch links point to the personal repo |
+| `93a78f4` | Extension identity personalized: `name=personal-ai-copilot`, `displayName=Personal-AI for Copilot Chat` |
+| `cb6ecca` | **Config keys fully isolated**: `deepseek-copilot.*` → `personal-ai.*` (config/commands/secrets/i18n keys/vendor all renamed) |
+
+### Important notes
+
+1. **Config prefix is now `personal-ai.*`**
+   - Search for `personal-ai` (not `deepseek-copilot`) in VS Code settings
+   - The command pallette command is now **`Personal-AI: Set API Key`** (not `DeepSeek: Set API Key`)
+   - Fully isolated from the original `Vizards` version — both can coexist
+
+2. **Config example**
+   ```jsonc
+   {
+     "personal-ai.baseUrl": "https://your-endpoint/v1",       // self-hosted endpoint
+     "personal-ai.modelIdOverrides": {
+       "deepseek-v4-flash-vision-exp": "deepseek-v4-flash-vision-exp"
+     }
+   }
+   ```
+
+3. **Packaging notes (Windows)**
+   - The project path **must not contain non-ASCII characters** (e.g. `G:\文档\...`), otherwise vsce's glob treats directories as files and fails with `not a file: out/client`. Package in an **ASCII path** (e.g. `G:\deepseek-build`) and copy the `.vsix` back
+   - `@vscode/vsce` must be **≥ 3.9.2** (3.9.1 has a directory-collection bug)
+   - For local packaging, add `--allow-package-all-secrets --allow-package-env-file` to bypass secretlint's Windows EISDIR issue
+   - Temporarily change `vscode:prepublish` from the bash version to `npm run compile` when packaging locally (no bash on Windows), then restore it
+
+4. **Model ID**
+   - The model `id` remains `deepseek-v4-flash-vision-exp` (matches the actual vLLM model name). Only override it via `personal-ai.modelIdOverrides` when connecting to a third-party API with a different model name
+
 ## License
 
 [MIT](LICENSE)
