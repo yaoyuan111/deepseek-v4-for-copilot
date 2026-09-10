@@ -22,7 +22,7 @@ export class AuthManager {
 			return secretKey;
 		}
 
-		const config = vscode.workspace.getConfiguration('deepseek-copilot');
+		const config = vscode.workspace.getConfiguration('personal-ai');
 		const settingsKey = config.get<string>('apiKey');
 		if (settingsKey?.trim()) {
 			return settingsKey.trim();

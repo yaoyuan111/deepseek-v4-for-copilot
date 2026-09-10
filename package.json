@@ -43,69 +43,69 @@
   "contributes": {
     "languageModelChatProviders": [
       {
-        "vendor": "deepseek",
-        "displayName": "DeepSeek"
+        "vendor": "personal-ai",
+        "displayName": "Personal-AI"
       }
     ],
     "commands": [
       {
-        "command": "deepseek-copilot.setApiKey",
-        "title": "%deepseek-copilot.command.setApiKey%"
+        "command": "personal-ai.setApiKey",
+        "title": "%personal-ai.command.setApiKey%"
       },
       {
-        "command": "deepseek-copilot.getApiKey",
-        "title": "%deepseek-copilot.command.getApiKey%"
+        "command": "personal-ai.getApiKey",
+        "title": "%personal-ai.command.getApiKey%"
       },
       {
-        "command": "deepseek-copilot.clearApiKey",
-        "title": "%deepseek-copilot.command.clearApiKey%"
+        "command": "personal-ai.clearApiKey",
+        "title": "%personal-ai.command.clearApiKey%"
       },
       {
-        "command": "deepseek-copilot.setVisionModel",
-        "title": "%deepseek-copilot.command.setVisionModel%"
+        "command": "personal-ai.setVisionModel",
+        "title": "%personal-ai.command.setVisionModel%"
       },
       {
-        "command": "deepseek-copilot.openSettings",
-        "title": "%deepseek-copilot.command.openSettings%"
+        "command": "personal-ai.openSettings",
+        "title": "%personal-ai.command.openSettings%"
       },
       {
-        "command": "deepseek-copilot.showLogs",
-        "title": "%deepseek-copilot.command.showLogs%"
+        "command": "personal-ai.showLogs",
+        "title": "%personal-ai.command.showLogs%"
       },
       {
-        "command": "deepseek-copilot.openRequestDumpsFolder",
-        "title": "%deepseek-copilot.command.openRequestDumpsFolder%"
+        "command": "personal-ai.openRequestDumpsFolder",
+        "title": "%personal-ai.command.openRequestDumpsFolder%"
       }
     ],
     "walkthroughs": [
       {
         "id": "deepseekGettingStarted",
-        "title": "%deepseek-copilot.walkthrough.title%",
-        "description": "%deepseek-copilot.walkthrough.description%",
+        "title": "%personal-ai.walkthrough.title%",
+        "description": "%personal-ai.walkthrough.description%",
         "steps": [
           {
             "id": "setApiKey",
-            "title": "%deepseek-copilot.walkthrough.setApiKey.title%",
-            "description": "%deepseek-copilot.walkthrough.setApiKey.description%",
+            "title": "%personal-ai.walkthrough.setApiKey.title%",
+            "description": "%personal-ai.walkthrough.setApiKey.description%",
             "media": {
               "markdown": "resources/walkthrough/set-api-key.md"
             },
             "completionEvents": [
-              "onCommand:deepseek-copilot.setApiKey"
+              "onCommand:personal-ai.setApiKey"
             ]
           },
           {
             "id": "showModels",
-            "title": "%deepseek-copilot.walkthrough.showModels.title%",
-            "description": "%deepseek-copilot.walkthrough.showModels.description%",
+            "title": "%personal-ai.walkthrough.showModels.title%",
+            "description": "%personal-ai.walkthrough.showModels.description%",
             "media": {
               "markdown": "resources/walkthrough/show-models.md"
             }
           },
           {
             "id": "advancedSettings",
-            "title": "%deepseek-copilot.walkthrough.advancedSettings.title%",
-            "description": "%deepseek-copilot.walkthrough.advancedSettings.description%",
+            "title": "%personal-ai.walkthrough.advancedSettings.title%",
+            "description": "%personal-ai.walkthrough.advancedSettings.description%",
             "media": {
               "markdown": "resources/walkthrough/advanced-settings.md"
             }
@@ -114,64 +114,64 @@
       }
     ],
     "configuration": {
-      "title": "%deepseek-copilot.config.title%",
+      "title": "%personal-ai.config.title%",
       "properties": {
-        "deepseek-copilot.baseUrl": {
+        "personal-ai.baseUrl": {
           "type": "string",
           "default": "https://api.deepseek.com",
-          "description": "%deepseek-copilot.config.baseUrl.description%"
+          "description": "%personal-ai.config.baseUrl.description%"
         },
-        "deepseek-copilot.maxTokens": {
+        "personal-ai.maxTokens": {
           "type": "number",
           "default": 0,
           "minimum": 0,
-          "description": "%deepseek-copilot.config.maxTokens.description%"
+          "description": "%personal-ai.config.maxTokens.description%"
         },
-        "deepseek-copilot.requestHeaders": {
+        "personal-ai.requestHeaders": {
           "type": "object",
           "default": {},
           "additionalProperties": {
             "type": "string"
           },
-          "markdownDescription": "%deepseek-copilot.config.requestHeaders.description%"
+          "markdownDescription": "%personal-ai.config.requestHeaders.description%"
         },
-        "deepseek-copilot.experimental.stabilizeToolList": {
+        "personal-ai.experimental.stabilizeToolList": {
           "type": "boolean",
           "default": false,
-          "markdownDescription": "%deepseek-copilot.config.experimental.stabilizeToolList.description%",
+          "markdownDescription": "%personal-ai.config.experimental.stabilizeToolList.description%",
           "tags": [
             "experimental"
           ]
         },
-        "deepseek-copilot.modelIdOverrides": {
+        "personal-ai.modelIdOverrides": {
           "type": "object",
           "default": {
             "deepseek-v4-flash-vision-exp": "deepseek-v4-flash-vision-exp"
           },
-          "description": "%deepseek-copilot.config.modelIdOverrides.description%",
+          "description": "%personal-ai.config.modelIdOverrides.description%",
           "additionalProperties": false,
           "properties": {
             "deepseek-v4-flash-vision-exp": {
               "type": "string",
-              "description": "%deepseek-copilot.config.modelIdOverrides.deepseek-v4-flash-vision-exp.description%"
+              "description": "%personal-ai.config.modelIdOverrides.deepseek-v4-flash-vision-exp.description%"
             }
           }
         },
-        "deepseek-copilot.visionModel": {
+        "personal-ai.visionModel": {
           "type": "string",
           "default": "",
           "tags": [
             "advanced"
           ],
-          "markdownDescription": "%deepseek-copilot.config.visionModel.description%"
+          "markdownDescription": "%personal-ai.config.visionModel.description%"
         },
-        "deepseek-copilot.visionPrompt": {
+        "personal-ai.visionPrompt": {
           "type": "string",
           "editPresentation": "multilineText",
           "default": "Text extraction is mandatory. Visual description required except T2.5. See OUTPUT FORMAT.\n\n---\n\nTASK 1 - TEXT EXTRACTION (always):\n\n1. Transcribe every detectable character verbatim - all text, symbols, and glyphs of any kind, in any location. Never correct, alter, summarize, paraphrase, or truncate the source.\n\n2. Preserve formatting and spatial grouping:\n   - Monospaced → code block (hint if known). Triple backticks in source → 4-backtick fence.\n   - Proportional → plain text, paragraph breaks.\n   - Tabular → Markdown table.\n   - Ambiguous → code block.\n\n3. Annotate spatial position:\n   - Isolated elements: label + colon.\n   - Multi-region: `[Region: name]` headers (avoids T1.4 collision).\n     [Region: name]\n     (content)\n\n4. Uncertainty markers (place at position):\n   [?] = uncertain char.\n   [unclear] = uncertain span.\n   [possible-artifact] = may not be text.\n   [unreadable] = illegible.\n   [truncated] = cut off at edge (place after last readable char).\n   Never guess or fabricate. If source contains a marker literally, backslash-escape it.\n\n5. Low-quality image: place after `--- Extracted Text ---`, before code block or transcription:\n   (Low image quality - confidence reduced.)\n\n6. No text: output \"No text detected.\" No code block, no other text.\n\n---\n\nTASK 2 - VISUAL DESCRIPTION (unless T2.5):\n\n1. Describe all non-text visual content.\n\n2. Text-heavy: describe application, window chrome, UI state, and color coding.\n\n3. Visual-primary: describe concisely but fully. Note color coding. Do not invent.\n\n4. Diagrams: describe structure - what labels represent, how elements connect. Diagram should be understandable from both sections.\n\n5. Omit Visual Context only for tightly cropped text. If any visual element beyond text is visible, include.\n\n---\n\nMULTIPLE IMAGES:\n\n- Label \"Image 1:\", \"Image 2:\", etc. Single image: skip label.\n- Combined summary only if images are related. If unsure, skip.\n\n---\n\nOUTPUT FORMAT:\n\nSingle image:\n--- Extracted Text ---\n[transcription]\n--- Visual Context ---\n[description]\n\nIf Visual Context omitted (T2.5), drop it.\n\nMultiple images (repeat for each):\nImage 1:\n--- Extracted Text ---\n[transcription]\n--- Visual Context ---\n[description]\n\n--- Combined Summary ---\n[summary - if applicable]\n\n---\n\nSPECIAL CASES:\n\n- Handwriting: best-effort; prepend \"(Handwriting - lower confidence.)\".\n- RTL: preserve direction; note in Visual Context.\n- Overlapping layers: extract all; flag [Foreground:] / [Background:].\n- Color: describe scheme in Visual Context only. Never encode in Extracted Text.\n- Image-in-image: treat as flat; note nesting in Visual Context.\n- Long lines: transcribe fully, no wrap; note overflow in Visual Context.\n\n---\n\nESCAPING - if source text contains a line exactly matching any format marker, backslash-escape it:\n\n- \\--- Extracted Text ---\n- \\--- Visual Context ---\n- \\--- Combined Summary ---\n- \\Image N: (standalone line immediately before a `---` marker)\n\nIf source contains any T1.4 marker literally, backslash-escape it.",
-          "markdownDescription": "%deepseek-copilot.config.visionPrompt.description%"
+          "markdownDescription": "%personal-ai.config.visionPrompt.description%"
         },
-        "deepseek-copilot.debugMode": {
+        "personal-ai.debugMode": {
           "type": "string",
           "default": "minimal",
           "enum": [
@@ -180,23 +180,23 @@
             "verbose"
           ],
           "enumItemLabels": [
-            "%deepseek-copilot.config.debugMode.minimal.label%",
-            "%deepseek-copilot.config.debugMode.metadata.label%",
-            "%deepseek-copilot.config.debugMode.verbose.label%"
+            "%personal-ai.config.debugMode.minimal.label%",
+            "%personal-ai.config.debugMode.metadata.label%",
+            "%personal-ai.config.debugMode.verbose.label%"
           ],
           "markdownEnumDescriptions": [
-            "%deepseek-copilot.config.debugMode.minimal.description%",
-            "%deepseek-copilot.config.debugMode.metadata.description%",
-            "%deepseek-copilot.config.debugMode.verbose.description%"
+            "%personal-ai.config.debugMode.minimal.description%",
+            "%personal-ai.config.debugMode.metadata.description%",
+            "%personal-ai.config.debugMode.verbose.description%"
           ],
-          "markdownDescription": "%deepseek-copilot.config.debugMode.description%"
+          "markdownDescription": "%personal-ai.config.debugMode.description%"
         }
       }
     }
   },
   "scripts": {
     "clean": "node -e \"require('node:fs').rmSync('out', { recursive: true, force: true, maxRetries: process.platform === 'win32' ? 10 : 0 })\"",
-    "vscode:prepublish": "bash .github/scripts/prepare-marketplace-readme.sh && npm run compile",
+    "vscode:prepublish": "npm run compile",
     "compile": "npm run clean && tsc -p ./",
     "watch": "npm run clean && tsc -watch -p ./",
     "lint": "oxlint",
@@ -208,7 +208,7 @@
   "devDependencies": {
     "@types/node": "^25.6.0",
     "@types/vscode": "^1.116.0",
-    "@vscode/vsce": "^3.9.1",
+    "@vscode/vsce": "^3.9.2",
     "ovsx": "0.10.12",
     "oxfmt": "^0.47.0",
     "oxlint": "^1.62.0",

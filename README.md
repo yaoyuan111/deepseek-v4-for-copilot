@@ -74,7 +74,7 @@ Pure VS Code API + Node.js built-ins. No Python, no Docker, no local proxy serve
 
 - VS Code 1.116 or later. This extension relies on non-public Copilot Chat APIs that may break on newer VS Code versions — [report an issue](https://github.com/Vizards/deepseek-v4-for-copilot/issues) if you hit one.
 - GitHub Copilot subscription (Free / Pro / Enterprise — the free tier works)
-- A compatible provider API key, or a compatible provider token when using a custom `deepseek-copilot.baseUrl`
+- A compatible provider API key, or a compatible provider token when using a custom `personal-ai.baseUrl`
 
 ### Installation
 
@@ -104,14 +104,14 @@ The model supports thinking mode, tool calling, and 1M token context.
 
 | Setting | Default | Description |
 |---|---|---|
-| `deepseek-copilot.baseUrl` | `https://api.deepseek.com` | API endpoint — change for self-hosted / proxied deployments |
-| `deepseek-copilot.requestHeaders` | `{}` | Custom headers for chat completions. [Configuration guide](https://github.com/Vizards/deepseek-v4-for-copilot/blob/main/docs/settings/request-headers.en.md) |
-| `deepseek-copilot.maxTokens` | `0` | Max output tokens (`0` = API default). Useful for cost control |
-| `deepseek-copilot.modelIdOverrides` | prefilled personal ID map | API model ID to send for Personal-AI. Change only for compatible third-party APIs with different model names |
-| `deepseek-copilot.debugMode` | `minimal` | Diagnostic mode: `minimal` for token usage only, `metadata` for privacy-preserving logs, or `verbose` for full request dumps and pipeline snapshots under extension global storage. Full dumps may include sensitive prompt text, tool schemas, file snippets, and image descriptions. Use `DeepSeek: Open Request Dumps Folder` to open the dump location |
-| `deepseek-copilot.visionModel` | *(auto)* | **Not used by Personal-AI** — this model has native image input. Kept for compatibility with the original extension |
-| `deepseek-copilot.visionPrompt` | *(built-in)* | **Not used by Personal-AI** — this model has native image input. Kept for compatibility with the original extension |
-| `deepseek-copilot.experimental.stabilizeToolList` | `false` | Experimental. Tries to pre-activate VS Code/Copilot virtual tools so the API `tools` parameter is more complete and stable across turns. May improve context-cache hit rate when enabled tools change between turns. Can increase input tokens because more function definitions may be included; cache-hit input tokens are cheaper but still count toward usage. Usually leave it off with 64 or fewer enabled tools unless the tool list still changes across turns; do not enable it with more than 128 enabled tools |
+| `personal-ai.baseUrl` | `https://api.deepseek.com` | API endpoint — change for self-hosted / proxied deployments |
+| `personal-ai.requestHeaders` | `{}` | Custom headers for chat completions. [Configuration guide](https://github.com/Vizards/deepseek-v4-for-copilot/blob/main/docs/settings/request-headers.en.md) |
+| `personal-ai.maxTokens` | `0` | Max output tokens (`0` = API default). Useful for cost control |
+| `personal-ai.modelIdOverrides` | prefilled personal ID map | API model ID to send for Personal-AI. Change only for compatible third-party APIs with different model names |
+| `personal-ai.debugMode` | `minimal` | Diagnostic mode: `minimal` for token usage only, `metadata` for privacy-preserving logs, or `verbose` for full request dumps and pipeline snapshots under extension global storage. Full dumps may include sensitive prompt text, tool schemas, file snippets, and image descriptions. Use `DeepSeek: Open Request Dumps Folder` to open the dump location |
+| `personal-ai.visionModel` | *(auto)* | **Not used by Personal-AI** — this model has native image input. Kept for compatibility with the original extension |
+| `personal-ai.visionPrompt` | *(built-in)* | **Not used by Personal-AI** — this model has native image input. Kept for compatibility with the original extension |
+| `personal-ai.experimental.stabilizeToolList` | `false` | Experimental. Tries to pre-activate VS Code/Copilot virtual tools so the API `tools` parameter is more complete and stable across turns. May improve context-cache hit rate when enabled tools change between turns. Can increase input tokens because more function definitions may be included; cache-hit input tokens are cheaper but still count toward usage. Usually leave it off with 64 or fewer enabled tools unless the tool list still changes across turns; do not enable it with more than 128 enabled tools |
 
 Thinking Effort is configured from Copilot Chat's model picker for the Personal-AI model.
 
@@ -119,7 +119,7 @@ Example `settings.json` override for compatible API proxies:
 
 ```json
 {
-  "deepseek-copilot.modelIdOverrides": {
+  "personal-ai.modelIdOverrides": {
     "deepseek-v4-flash-vision-exp": "your-model-id"
   }
 }
@@ -149,17 +149,17 @@ Example `settings.json` override for compatible API proxies:
 | **视觉处理** | 原生 + Vision Proxy 两种 | 仅**原生视觉**（`nativeImageInput: true`） |
 | **退役提示** | V4 系列会显示「已退役」警告 | 已移除 `LEGACY_MODEL_IDS`，不显示退役警告 |
 | **`modelIdOverrides`** | 4 个模型映射 | 仅 `deepseek-v4-flash-vision-exp` 一项 |
-| **接入端点** | 官方 DeepSeek API | 可配置为自建 / 自托管 / 中转服务（`deepseek-copilot.baseUrl`） |
+| **接入端点** | 官方 DeepSeek API | 可配置为自建 / 自托管 / 中转服务（`personal-ai.baseUrl`） |
 
 ### 对接自建服务的配置示例
 
 ```jsonc
 {
   // 自建端点（阿里云中转 / 本地 vLLM / 自托管）
-  "deepseek-copilot.baseUrl": "https://your-endpoint/v1",
+  "personal-ai.baseUrl": "https://your-endpoint/v1",
 
   // 模型 ID 覆盖（对接第三方兼容 API 时使用）
-  "deepseek-copilot.modelIdOverrides": {
+  "personal-ai.modelIdOverrides": {
     "deepseek-v4-flash-vision-exp": "deepseek-v4-flash-vision-exp"
   }
 }

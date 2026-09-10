@@ -62,11 +62,11 @@ export class DeepSeekChatProvider implements vscode.LanguageModelChatProvider {
 			// Settings-based fallback API key + base URL changes.
 			vscode.workspace.onDidChangeConfiguration((e) => {
 				if (
-					e.affectsConfiguration('deepseek-copilot.apiKey') ||
-					e.affectsConfiguration('deepseek-copilot.baseUrl')
+					e.affectsConfiguration('personal-ai.apiKey') ||
+					e.affectsConfiguration('personal-ai.baseUrl')
 				) {
 					this.invalidateCurrencyAndRefreshModels();
-				} else if (e.affectsConfiguration('deepseek-copilot.modelIdOverrides')) {
+				} else if (e.affectsConfiguration('personal-ai.modelIdOverrides')) {
 					this.refreshModelPicker();
 				}
 			}),
@@ -74,7 +74,7 @@ export class DeepSeekChatProvider implements vscode.LanguageModelChatProvider {
 			// When another window sets/clears the API key, refresh this window's
 			// model picker so the warning state stays in sync.
 			context.secrets.onDidChange((e) => {
-				if (e.key === 'deepseek-copilot.apiKey') {
+				if (e.key === 'personal-ai.apiKey') {
 					this.invalidateCurrencyAndRefreshModels();
 				}
 			}),
@@ -122,9 +122,9 @@ export class DeepSeekChatProvider implements vscode.LanguageModelChatProvider {
 		// instead of leaving stale entries behind after deactivate. The returned
 		// model list itself is unused — we only call this for its side effect.
 		try {
-			await vscode.lm.selectChatModels({ vendor: 'deepseek' });
+			await vscode.lm.selectChatModels({ vendor: 'personal-ai' });
 		} catch (error) {
-			logger.warn('Failed to refresh DeepSeek models during deactivate', error);
+			logger.warn('Failed to refresh Personal-AI models during deactivate', error);
 		}
 	}
 

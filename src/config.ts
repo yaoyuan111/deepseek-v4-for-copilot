@@ -75,7 +75,7 @@ export function getStabilizeToolListEnabled(): boolean {
 }
 
 /**
- * Migrate the legacy boolean `deepseek-copilot.debug` setting to `debugMode`.
+ * Migrate the legacy boolean `personal-ai.debug` setting to `debugMode`.
  *
  * `debug: true` maps to `debugMode: metadata`; `debug: false` maps to the
  * default `minimal`, so it only needs cleanup.

@@ -74,7 +74,7 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
 
 - VS Code 1.116 及以上版本。本扩展依赖非公开的 Copilot Chat API，较新的 VS Code 版本可能存在兼容性问题——如遇到请[提交 Issue](https://github.com/Vizards/deepseek-v4-for-copilot/issues)。
 - GitHub Copilot 订阅（Free / Pro / Enterprise——免费版即可使用）
-- DeepSeek API Key，从 [platform.deepseek.com](https://platform.deepseek.com) 获取；使用自定义 `deepseek-copilot.baseUrl` 时也可使用兼容的 provider token
+- DeepSeek API Key，从 [platform.deepseek.com](https://platform.deepseek.com) 获取；使用自定义 `personal-ai.baseUrl` 时也可使用兼容的 provider token
 
 ### 安装方式
 
@@ -104,14 +104,14 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
 
 | 设置项 | 默认值 | 说明 |
 |---|---|---|
-| `deepseek-copilot.baseUrl` | `https://api.deepseek.com` | API 端点——可改为自托管或代理部署地址 |
-| `deepseek-copilot.requestHeaders` | `{}` | 聊天补全请求的自定义请求头。[配置说明](https://github.com/Vizards/deepseek-v4-for-copilot/blob/main/docs/settings/request-headers.zh.md) |
-| `deepseek-copilot.maxTokens` | `0` | 最大输出 Token 数（`0` = API 默认值）。可用于成本控制 |
-| `deepseek-copilot.modelIdOverrides` | 预填个人 ID 映射 | Personal-AI 对应的 API 模型 ID。仅在使用模型名不同的兼容第三方 API 时修改 |
-| `deepseek-copilot.debugMode` | `minimal` | 诊断模式：`minimal` 仅上报 token 用量，`metadata` 输出隐私安全日志，`verbose` 将完整请求 dump 和 pipeline snapshot 写入扩展 global storage。完整 dump 可能包含敏感提示词文本、工具定义、文件片段和图片描述。使用 `DeepSeek: 打开请求 Dump 目录` 打开 dump 位置 |
-| `deepseek-copilot.visionModel` | *(自动)* | **Personal-AI 不使用此配置**——该模型支持原生图片输入。保留以兼容原版扩展 |
-| `deepseek-copilot.visionPrompt` | *(内置)* | **Personal-AI 不使用此配置**——该模型支持原生图片输入。保留以兼容原版扩展 |
-| `deepseek-copilot.experimental.stabilizeToolList` | `false` | 实验性设置。尝试预先激活 VS Code/Copilot 的虚拟工具，让传给 API 的 `tools` 参数在多轮对话中更完整、更稳定。当已启用工具跨轮次变化时，可能提高上下文缓存命中率。代价是 input tokens 可能增加；缓存命中的 input tokens 单价更低，但仍会计入用量。64 个或更少已启用工具时通常无需开启，除非工具列表仍在跨轮次变化；超过 128 个已启用工具时不建议开启 |
+| `personal-ai.baseUrl` | `https://api.deepseek.com` | API 端点——可改为自托管或代理部署地址 |
+| `personal-ai.requestHeaders` | `{}` | 聊天补全请求的自定义请求头。[配置说明](https://github.com/Vizards/deepseek-v4-for-copilot/blob/main/docs/settings/request-headers.zh.md) |
+| `personal-ai.maxTokens` | `0` | 最大输出 Token 数（`0` = API 默认值）。可用于成本控制 |
+| `personal-ai.modelIdOverrides` | 预填个人 ID 映射 | Personal-AI 对应的 API 模型 ID。仅在使用模型名不同的兼容第三方 API 时修改 |
+| `personal-ai.debugMode` | `minimal` | 诊断模式：`minimal` 仅上报 token 用量，`metadata` 输出隐私安全日志，`verbose` 将完整请求 dump 和 pipeline snapshot 写入扩展 global storage。完整 dump 可能包含敏感提示词文本、工具定义、文件片段和图片描述。使用 `DeepSeek: 打开请求 Dump 目录` 打开 dump 位置 |
+| `personal-ai.visionModel` | *(自动)* | **Personal-AI 不使用此配置**——该模型支持原生图片输入。保留以兼容原版扩展 |
+| `personal-ai.visionPrompt` | *(内置)* | **Personal-AI 不使用此配置**——该模型支持原生图片输入。保留以兼容原版扩展 |
+| `personal-ai.experimental.stabilizeToolList` | `false` | 实验性设置。尝试预先激活 VS Code/Copilot 的虚拟工具，让传给 API 的 `tools` 参数在多轮对话中更完整、更稳定。当已启用工具跨轮次变化时，可能提高上下文缓存命中率。代价是 input tokens 可能增加；缓存命中的 input tokens 单价更低，但仍会计入用量。64 个或更少已启用工具时通常无需开启，除非工具列表仍在跨轮次变化；超过 128 个已启用工具时不建议开启 |
 
 思考强度可通过 Copilot Chat 的模型选择器对 Personal-AI 进行设置。
 
@@ -119,7 +119,7 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
 
 ```json
 {
-  "deepseek-copilot.modelIdOverrides": {
+  "personal-ai.modelIdOverrides": {
     "deepseek-v4-flash-vision-exp": "your-model-id"
   }
 }
@@ -149,17 +149,17 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
 | **视觉处理** | 原生 + 视觉代理两种 | 仅**原生视觉**（`nativeImageInput: true`） |
 | **退役提示** | V4 系列会显示「已退役」警告 | 已移除 `LEGACY_MODEL_IDS`，不显示退役警告 |
 | **`modelIdOverrides`** | 4 个模型映射 | 仅 `deepseek-v4-flash-vision-exp` 一项 |
-| **接入端点** | 官方 DeepSeek API | 可配置为自建 / 自托管 / 中转服务（`deepseek-copilot.baseUrl`） |
+| **接入端点** | 官方 DeepSeek API | 可配置为自建 / 自托管 / 中转服务（`personal-ai.baseUrl`） |
 
 ### 对接自建服务的配置示例
 
 ```jsonc
 {
   // 自建端点（阿里云中转 / 本地 vLLM / 自托管）
-  "deepseek-copilot.baseUrl": "https://your-endpoint/v1",
+  "personal-ai.baseUrl": "https://your-endpoint/v1",
 
   // 模型 ID 覆盖（对接第三方兼容 API 时使用）
-  "deepseek-copilot.modelIdOverrides": {
+  "personal-ai.modelIdOverrides": {
     "deepseek-v4-flash-vision-exp": "deepseek-v4-flash-vision-exp"
   }
 }

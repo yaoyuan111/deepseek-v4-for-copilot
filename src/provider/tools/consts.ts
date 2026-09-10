@@ -6,7 +6,7 @@ export const ACTIVATE_TOOL_PREFIX = 'activate_';
 export const PREFLIGHT_ACTIVATE_CALL_ID_PREFIX = 'deepseek_preflight_activate_';
 export const MAX_PREFLIGHT_ROUNDS_PER_USER_REQUEST = 3;
 
-export const TOOL_DRIFT_NOTICE_START = '[deepseek-copilot-tool-drift-notice-start]: #';
-export const TOOL_DRIFT_NOTICE_END = '[deepseek-copilot-tool-drift-notice-end]: #';
-export const VISION_PROXY_NOTICE_START = '[deepseek-copilot-vision-proxy-notice-start]: #';
-export const VISION_PROXY_NOTICE_END = '[deepseek-copilot-vision-proxy-notice-end]: #';
+export const TOOL_DRIFT_NOTICE_START = '[personal-ai-tool-drift-notice-start]: #';
+export const TOOL_DRIFT_NOTICE_END = '[personal-ai-tool-drift-notice-end]: #';
+export const VISION_PROXY_NOTICE_START = '[personal-ai-vision-proxy-notice-start]: #';
+export const VISION_PROXY_NOTICE_END = '[personal-ai-vision-proxy-notice-end]: #';

@@ -2,9 +2,9 @@
 README.md
 README.zh-cn.md
 src/**
-out/**/*.map
-out/**/*.d.ts
-out/**/*.d.ts.map
+**/*.map
+**/*.d.ts
+**/*.d.ts.map
 tsconfig.json
 .github/**
 .gitignore

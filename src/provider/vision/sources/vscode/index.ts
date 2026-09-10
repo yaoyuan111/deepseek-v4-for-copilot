@@ -127,14 +127,14 @@ export class VSCodeLanguageModelVisionDescriber implements VisionDescriber {
 }
 
 export function getVisionPrompt(): string {
-	const config = vscode.workspace.getConfiguration('deepseek-copilot');
+	const config = vscode.workspace.getConfiguration('personal-ai');
 	return (
 		config.get<string>('visionPrompt', IMAGE_DESCRIPTION_PROMPT).trim() || IMAGE_DESCRIPTION_PROMPT
 	);
 }
 
 export function getConfiguredVisionModelKey(): string | undefined {
-	const config = vscode.workspace.getConfiguration('deepseek-copilot');
+	const config = vscode.workspace.getConfiguration('personal-ai');
 	const key = config.get<string>('visionModel', '');
 	return key.trim() || undefined;
 }
@@ -148,7 +148,7 @@ export async function saveVSCodeVisionModelKey(key: string): Promise<void> {
 	if (!normalizedKey) {
 		throw new Error(t('vision.panel.error.required', t('vision.panel.source.vscodeLm')));
 	}
-	const config = vscode.workspace.getConfiguration('deepseek-copilot');
+	const config = vscode.workspace.getConfiguration('personal-ai');
 	await config.update('visionModel', normalizedKey, vscode.ConfigurationTarget.Global);
 }
 
@@ -188,7 +188,7 @@ export function pickPreferredVSCodeVisionModelKey(
 	// In auto mode, require an exact Vision Exp match and do not fall back to
 	// arbitrary options to keep the default path deterministic.
 	const preferred = options.find(
-		(model) => model.vendor === 'deepseek' && model.id === DEFAULT_VISION_MODEL_ID,
+		(model) => model.vendor === 'personal-ai' && model.id === DEFAULT_VISION_MODEL_ID,
 	);
 	return preferred?.key;
 }
@@ -216,7 +216,7 @@ function pickPreferredVSCodeVisionModel(
 
 	// Auto mode: only use the exact default vision model id.
 	return models.find(
-		(model) => model.vendor === 'deepseek' && model.id === DEFAULT_VISION_MODEL_ID,
+		(model) => model.vendor === 'personal-ai' && model.id === DEFAULT_VISION_MODEL_ID,
 	);
 }
 
@@ -225,7 +225,7 @@ function isVSCodeVisionModel(model: vscode.LanguageModelChat): boolean {
 	// Adding V4.1 Flash must not change the existing proxy choices or defaults.
 	const isDeepSeekVisionExp = isDeepSeekVisionExpModel(model);
 	const isVendorAllowed =
-		model.vendor === 'deepseek'
+		model.vendor === 'personal-ai'
 			? isDeepSeekVisionExp
 			: !EXCLUDED_VISION_MODEL_VENDORS.has(model.vendor);
 	return (
@@ -239,7 +239,7 @@ function isVSCodeVisionModel(model: vscode.LanguageModelChat): boolean {
 }
 
 function isDeepSeekVisionExpModel(model: Pick<vscode.LanguageModelChat, 'vendor' | 'id'>): boolean {
-	return model.vendor === 'deepseek' && model.id === DEFAULT_VISION_MODEL_ID;
+	return model.vendor === 'personal-ai' && model.id === DEFAULT_VISION_MODEL_ID;
 }
 
 function getVSCodeVisionModelKey(model: Pick<vscode.LanguageModelChat, 'vendor' | 'id'>): string {

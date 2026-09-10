@@ -9,7 +9,7 @@ import type { ModelDefinition } from './types';
  */
 
 /** VS Code configuration section prefix for all extension settings. */
-export const CONFIG_SECTION = 'deepseek-copilot';
+export const CONFIG_SECTION = 'personal-ai';
 
 export const EXTERNAL_URLS = {
 	deepseek: {
@@ -34,10 +34,10 @@ export const LANGUAGE_MODEL_CHAT_SYSTEM_ROLE = 3;
 // ---- Secret keys ----
 
 /** SecretStorage key for the DeepSeek API key. */
-export const API_KEY_SECRET = 'deepseek-copilot.apiKey';
+export const API_KEY_SECRET = 'personal-ai.apiKey';
 
 /** memento key tracking whether the welcome walkthrough has been shown. */
-export const WELCOME_SHOWN_KEY = 'deepseek-copilot.welcomeShown';
+export const WELCOME_SHOWN_KEY = 'personal-ai.welcomeShown';
 
 // ---- Walkthrough ----
 
