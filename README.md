@@ -12,7 +12,7 @@
 
 <p align="center">
   English |
-  <a href="https://github.com/Vizards/deepseek-v4-for-copilot/blob/main/README.zh-cn.md">简体中文</a>
+  <a href="https://github.com/yaoyuan111/deepseek-v4-for-copilot/blob/main/README.zh-cn.md">简体中文</a>
 </p>
 
 > 🎉 **致谢与说明**

@@ -11,7 +11,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Vizards/deepseek-v4-for-copilot/blob/main/README.md">English</a> |
+  <a href="https://github.com/yaoyuan111/deepseek-v4-for-copilot/blob/main/README.md">English</a> |
   简体中文
 </p>
 
