@@ -4,11 +4,11 @@
   "description": "Use DeepSeek V4.1 Flash in Copilot Chat with native vision, Vision Proxy, reasoning, and agent tools.",
   "icon": "resources/icon.png",
   "version": "0.9.0",
-  "publisher": "Vizards",
+  "publisher": "yaoyuan111",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Vizards/deepseek-v4-for-copilot"
+    "url": "https://github.com/yaoyuan111/deepseek-v4-for-copilot"
   },
   "engines": {
     "vscode": "^1.116.0",
@@ -203,7 +203,7 @@
     "format": "oxfmt --write src/",
     "format:check": "oxfmt --check src/",
     "package": "vsce package --readme-path dist/README.marketplace.md -o dist/",
-    "login": "vsce login Vizards"
+    "login": "vsce login yaoyuan111"
   },
   "devDependencies": {
     "@types/node": "^25.6.0",
