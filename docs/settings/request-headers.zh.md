@@ -1,6 +1,6 @@
 # 自定义请求头
 
-`deepseek-copilot.requestHeaders` 用于为发送到 `deepseek-copilot.baseUrl` 的聊天补全请求添加或覆盖请求头，默认值为 `{}`。
+`personal-ai.requestHeaders` 用于为发送到 `personal-ai.baseUrl` 的聊天补全请求添加或覆盖请求头，默认值为 `{}`。
 
 ## 配置方式
 
@@ -10,9 +10,9 @@
 
 ```json
 {
-  "deepseek-copilot.baseUrl": "https://opencode.ai/zen/go/v1",
-  "deepseek-copilot.requestHeaders": {
-    "User-Agent": "deepseek-copilot",
+  "personal-ai.baseUrl": "https://opencode.ai/zen/go/v1",
+  "personal-ai.requestHeaders": {
+    "User-Agent": "personal-ai",
     "x-opencode-session": "${conversationId}"
   }
 }

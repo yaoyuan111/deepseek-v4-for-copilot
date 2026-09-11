@@ -1,5 +1,5 @@
 /**
- * Shared types for the DeepSeek Copilot extension.
+ * Shared types for the Personal-AI Copilot extension.
  */
 
 // ---- API request/response types ----

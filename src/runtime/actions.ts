@@ -25,19 +25,19 @@ const ACTION_URLS: readonly ActionUrlDefinition[] = [
 		key: 'configureApiKey',
 		path: CONFIGURE_API_KEY_URI_PATH,
 		handle: () => vscode.commands.executeCommand('personal-ai.setApiKey'),
-		resolveFailureMessage: 'Failed to resolve DeepSeek set API key URI',
+		resolveFailureMessage: 'Failed to resolve Personal-AI set API key URI',
 	},
 	{
 		key: 'showLogs',
 		path: SHOW_LOGS_URI_PATH,
 		handle: () => logger.show(),
-		resolveFailureMessage: 'Failed to resolve DeepSeek show logs URI',
+		resolveFailureMessage: 'Failed to resolve Personal-AI show logs URI',
 		setUrl: setProviderNoticeShowLogsUrl,
 	},
 	{
 		path: SET_VISION_MODEL_URI_PATH,
 		handle: () => vscode.commands.executeCommand('personal-ai.setVisionModel'),
-		resolveFailureMessage: 'Failed to resolve DeepSeek set vision model URI',
+		resolveFailureMessage: 'Failed to resolve Personal-AI set vision model URI',
 		setUrl: setVisionProxyConfigurationUrl,
 	},
 ];
@@ -49,11 +49,11 @@ export function registerActionUrls(context: vscode.ExtensionContext): void {
 				const action = ACTION_URLS.find((item) => item.path === uri.path);
 				if (action) {
 					void Promise.resolve(action.handle()).catch((error) => {
-						logger.warn(`Failed to handle DeepSeek URI action: ${uri.path}`, error);
+						logger.warn(`Failed to handle Personal-AI URI action: ${uri.path}`, error);
 					});
 					return;
 				}
-				logger.warn(`Unhandled DeepSeek URI: ${uri.toString(true)}`);
+				logger.warn(`Unhandled Personal-AI URI: ${uri.toString(true)}`);
 			},
 		}),
 	);

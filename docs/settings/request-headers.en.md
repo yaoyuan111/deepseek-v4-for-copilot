@@ -1,6 +1,6 @@
 # Request Headers
 
-`deepseek-copilot.requestHeaders` adds or overrides headers for chat completion requests sent to `deepseek-copilot.baseUrl`. Its default value is `{}`.
+`personal-ai.requestHeaders` adds or overrides headers for chat completion requests sent to `personal-ai.baseUrl`. Its default value is `{}`.
 
 ## Configuration
 
@@ -10,9 +10,9 @@ Example configuration for [OpenCode Go](https://opencode.ai/docs/go/):
 
 ```json
 {
-  "deepseek-copilot.baseUrl": "https://opencode.ai/zen/go/v1",
-  "deepseek-copilot.requestHeaders": {
-    "User-Agent": "deepseek-copilot",
+  "personal-ai.baseUrl": "https://opencode.ai/zen/go/v1",
+  "personal-ai.requestHeaders": {
+    "User-Agent": "personal-ai",
     "x-opencode-session": "${conversationId}"
   }
 }

@@ -85,7 +85,7 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
 
 ### 使用步骤
 
-1. 通过命令面板（`Cmd+Shift+P`）运行 **DeepSeek: 设置 API Key**
+1. 通过命令面板（`Cmd+Shift+P`）运行 **Personal-AI: 设置 API Key**
 2. 粘贴你的 Key 或兼容的 provider token（官方 DeepSeek Key 通常以 `sk-` 开头）
 3. 打开 Copilot Chat，点击模型选择器，选择 **Personal-AI**
 4. 搞定——开始聊天
@@ -108,7 +108,7 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
 | `personal-ai.requestHeaders` | `{}` | 聊天补全请求的自定义请求头。[配置说明](https://github.com/Vizards/deepseek-v4-for-copilot/blob/main/docs/settings/request-headers.zh.md) |
 | `personal-ai.maxTokens` | `0` | 最大输出 Token 数（`0` = API 默认值）。可用于成本控制 |
 | `personal-ai.modelIdOverrides` | 预填个人 ID 映射 | Personal-AI 对应的 API 模型 ID。仅在使用模型名不同的兼容第三方 API 时修改 |
-| `personal-ai.debugMode` | `minimal` | 诊断模式：`minimal` 仅上报 token 用量，`metadata` 输出隐私安全日志，`verbose` 将完整请求 dump 和 pipeline snapshot 写入扩展 global storage。完整 dump 可能包含敏感提示词文本、工具定义、文件片段和图片描述。使用 `DeepSeek: 打开请求 Dump 目录` 打开 dump 位置 |
+| `personal-ai.debugMode` | `minimal` | 诊断模式：`minimal` 仅上报 token 用量，`metadata` 输出隐私安全日志，`verbose` 将完整请求 dump 和 pipeline snapshot 写入扩展 global storage。完整 dump 可能包含敏感提示词文本、工具定义、文件片段和图片描述。使用 `Personal-AI: 打开请求 Dump 目录` 打开 dump 位置 |
 | `personal-ai.visionModel` | *(自动)* | **Personal-AI 不使用此配置**——该模型支持原生图片输入。保留以兼容原版扩展 |
 | `personal-ai.visionPrompt` | *(内置)* | **Personal-AI 不使用此配置**——该模型支持原生图片输入。保留以兼容原版扩展 |
 | `personal-ai.experimental.stabilizeToolList` | `false` | 实验性设置。尝试预先激活 VS Code/Copilot 的虚拟工具，让传给 API 的 `tools` 参数在多轮对话中更完整、更稳定。当已启用工具跨轮次变化时，可能提高上下文缓存命中率。代价是 input tokens 可能增加；缓存命中的 input tokens 单价更低，但仍会计入用量。64 个或更少已启用工具时通常无需开启，除非工具列表仍在跨轮次变化；超过 128 个已启用工具时不建议开启 |
@@ -165,7 +165,7 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
 }
 ```
 
-然后在命令面板运行 **`DeepSeek: 设置 API Key`**，输入你的服务商 API Key 即可。
+然后在命令面板运行 **`Personal-AI: 设置 API Key`**，输入你的服务商 API Key 即可。
 
 ## 更改点与注意点（2026-09-11 汇总）
 

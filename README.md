@@ -85,7 +85,7 @@ Install from the registry used by your editor:
 
 ### Usage
 
-1. Run **DeepSeek: Set API Key** from the Command Palette (`Cmd+Shift+P`)
+1. Run **Personal-AI: Set API Key** from the Command Palette (`Cmd+Shift+P`)
 2. Paste your key or compatible provider token (official DeepSeek keys usually start with `sk-`)
 3. Open Copilot Chat, click the model picker, and choose **Personal-AI**
 4. That's it — chat away
@@ -108,7 +108,7 @@ The model supports thinking mode, tool calling, and 1M token context.
 | `personal-ai.requestHeaders` | `{}` | Custom headers for chat completions. [Configuration guide](https://github.com/Vizards/deepseek-v4-for-copilot/blob/main/docs/settings/request-headers.en.md) |
 | `personal-ai.maxTokens` | `0` | Max output tokens (`0` = API default). Useful for cost control |
 | `personal-ai.modelIdOverrides` | prefilled personal ID map | API model ID to send for Personal-AI. Change only for compatible third-party APIs with different model names |
-| `personal-ai.debugMode` | `minimal` | Diagnostic mode: `minimal` for token usage only, `metadata` for privacy-preserving logs, or `verbose` for full request dumps and pipeline snapshots under extension global storage. Full dumps may include sensitive prompt text, tool schemas, file snippets, and image descriptions. Use `DeepSeek: Open Request Dumps Folder` to open the dump location |
+| `personal-ai.debugMode` | `minimal` | Diagnostic mode: `minimal` for token usage only, `metadata` for privacy-preserving logs, or `verbose` for full request dumps and pipeline snapshots under extension global storage. Full dumps may include sensitive prompt text, tool schemas, file snippets, and image descriptions. Use `Personal-AI: Open Request Dumps Folder` to open the dump location |
 | `personal-ai.visionModel` | *(auto)* | **Not used by Personal-AI** — this model has native image input. Kept for compatibility with the original extension |
 | `personal-ai.visionPrompt` | *(built-in)* | **Not used by Personal-AI** — this model has native image input. Kept for compatibility with the original extension |
 | `personal-ai.experimental.stabilizeToolList` | `false` | Experimental. Tries to pre-activate VS Code/Copilot virtual tools so the API `tools` parameter is more complete and stable across turns. May improve context-cache hit rate when enabled tools change between turns. Can increase input tokens because more function definitions may be included; cache-hit input tokens are cheaper but still count toward usage. Usually leave it off with 64 or fewer enabled tools unless the tool list still changes across turns; do not enable it with more than 128 enabled tools |
@@ -165,7 +165,7 @@ Example `settings.json` override for compatible API proxies:
 }
 ```
 
-然后在命令面板运行 **`DeepSeek: Set API Key`**，输入你的服务商 API Key 即可。
+然后在命令面板运行 **`Personal-AI: Set API Key`**，输入你的服务商 API Key 即可。
 
 ## Changes & Notes (2026-09-11 summary)
 

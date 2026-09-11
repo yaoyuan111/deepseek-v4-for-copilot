@@ -39,7 +39,7 @@ const zh: Translations = {
 	'auth.emptyValidation': 'API Key 不能为空',
 	'auth.saved': 'API Key 已安全保存。',
 	'auth.removed': 'API Key 已移除。',
-	'auth.notConfigured': 'API Key 未配置，请在命令面板运行 "DeepSeek: 设置 API Key"。',
+	'auth.notConfigured': 'API Key 未配置，请在命令面板运行 "Personal-AI: 设置 API Key"。',
 
 	// Thinking Effort — short labels for model picker dropdown
 	'status.thinking': '思考模式',
@@ -58,9 +58,9 @@ const zh: Translations = {
 	'vision.unavailable': '无可用视觉模型，图片已忽略。',
 	'vision.proxyError': '视觉代理异常：',
 	'vision.action.configureProxy': '配置视觉代理',
-	'vision.panel.title': 'DeepSeek 视觉代理',
+	'vision.panel.title': 'Personal-AI 视觉代理',
 	'vision.panel.description':
-		'为旧 V4 Flash 和 Pro 入口配置一个将图片转换成文字描述的视觉模型。V4.1 Flash 和 Vision Exp 会直接处理原图。',
+		'为兼容原版扩展而保留。Personal-AI 模型原生支持图片输入，通常无需配置视觉代理。',
 	'vision.panel.source.vscodeLm': 'VS Code 模型',
 	'vision.panel.source.apiEndpoint': 'API 端点',
 	'vision.panel.field.source': '视觉代理来源',
@@ -208,11 +208,11 @@ const zh: Translations = {
 	'error.unknown': 'DeepSeek 请求失败：{0}',
 
 	// Extension
-	'extension.activateFailed': 'DeepSeek 激活失败，请运行 "DeepSeek: 显示日志" 查看详情。',
-	'extension.deactivateFailed': 'DeepSeek 停用异常',
-	'extension.welcomeFailed': '欢迎引导加载异常',
+	'extension.activateFailed': 'Personal-AI 激活失败，请运行 "Personal-AI: 显示日志" 查看详情。',
+	'extension.deactivateFailed': 'Personal-AI 停用异常',
+	'extension.welcomeFailed': 'Personal-AI 欢迎引导加载异常',
 	'extension.openRequestDumpsFolderFailed':
-		'打开请求 dump 目录失败，请运行 "DeepSeek: 显示日志" 查看详情。',
+		'打开请求 dump 目录失败，请运行 "Personal-AI: 显示日志" 查看详情。',
 };
 
 const en: Translations = {
@@ -232,7 +232,7 @@ const en: Translations = {
 	'model.pricing.transitionTime.weekday': 'on {0} at {1}',
 
 	// API Key
-	'auth.apiKeyRequiredDetail': 'Please run DeepSeek: Set API Key to configure.',
+	'auth.apiKeyRequiredDetail': 'Please run Personal-AI: Set API Key to configure.',
 	'auth.prompt':
 		'Enter your DeepSeek API key or compatible provider token. Official DeepSeek keys usually start with "sk-".',
 	'auth.placeholder': 'sk-... or provider token',
@@ -240,7 +240,7 @@ const en: Translations = {
 	'auth.saved': 'DeepSeek API key saved.',
 	'auth.removed': 'DeepSeek API key removed.',
 	'auth.notConfigured':
-		'DeepSeek API key not configured. Run "DeepSeek: Set API Key" from the Command Palette.',
+		'Personal-AI API key not configured. Run "Personal-AI: Set API Key" from the Command Palette.',
 
 	// Thinking Effort
 	'status.thinking': 'Thinking Effort',
@@ -261,9 +261,9 @@ const en: Translations = {
 	'vision.unavailable': 'No vision models available, image(s) ignored',
 	'vision.proxyError': 'Vision proxy error:',
 	'vision.action.configureProxy': 'Configure Vision Proxy',
-	'vision.panel.title': 'DeepSeek Vision Proxy',
+	'vision.panel.title': 'Personal-AI Vision Proxy',
 	'vision.panel.description':
-		'Configure a vision model that turns images into text for legacy V4 Flash and Pro entries. V4.1 Flash and Vision Exp process original images directly.',
+		'Kept for compatibility with the original extension. The Personal-AI model supports native image input and usually does not need a vision proxy.',
 	'vision.panel.source.vscodeLm': 'VS Code model',
 	'vision.panel.source.apiEndpoint': 'API endpoint',
 	'vision.panel.field.source': 'Vision proxy source',
@@ -437,11 +437,11 @@ const en: Translations = {
 	'error.unknown': 'DeepSeek request failed: {0}',
 
 	// Extension
-	'extension.activateFailed': 'DeepSeek failed to activate. Run "DeepSeek: Show Logs" for details.',
-	'extension.deactivateFailed': 'Failed to prepare DeepSeek provider for deactivate',
-	'extension.welcomeFailed': 'Failed to show DeepSeek welcome prompt',
+	'extension.activateFailed': 'Personal-AI failed to activate. Run "Personal-AI: Show Logs" for details.',
+	'extension.deactivateFailed': 'Failed to prepare Personal-AI provider for deactivate',
+	'extension.welcomeFailed': 'Failed to show Personal-AI welcome prompt',
 	'extension.openRequestDumpsFolderFailed':
-		'Failed to open request dumps folder. Run "DeepSeek: Show Logs" for details.',
+		'Failed to open request dumps folder. Run "Personal-AI: Show Logs" for details.',
 };
 
 /**
