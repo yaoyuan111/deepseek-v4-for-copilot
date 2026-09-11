@@ -146,14 +146,14 @@
         "personal-ai.modelIdOverrides": {
           "type": "object",
           "default": {
-            "deepseek-v4-flash-vision-exp": "deepseek-v4-flash-vision-exp"
+            "personal-ai-flash-vision-exp": "deepseek-v4-flash-vision-exp"
           },
           "description": "%personal-ai.config.modelIdOverrides.description%",
           "additionalProperties": false,
           "properties": {
-            "deepseek-v4-flash-vision-exp": {
+            "personal-ai-flash-vision-exp": {
               "type": "string",
-              "description": "%personal-ai.config.modelIdOverrides.deepseek-v4-flash-vision-exp.description%"
+              "description": "%personal-ai.config.modelIdOverrides.personal-ai-flash-vision-exp.description%"
             }
           }
         },

@@ -43,7 +43,7 @@ Love DeepSeek's price-performance but don't want to give up GitHub Copilot's age
 ## Features
 
 ### Personal-AI in the model picker
-The picker includes a single **Personal-AI** entry (mapped to `deepseek-v4-flash-vision-exp`), with long context, tool calling, and configurable thinking effort.
+The picker includes a single **Personal-AI** entry (VS Code model ID `personal-ai-flash-vision-exp`), with long context, tool calling, and configurable thinking effort.
 
 ### Native Vision
 **Personal-AI** handles image attachments natively, without a Vision Proxy. Drop an image into Copilot Chat and the model responds to it directly.
@@ -96,7 +96,7 @@ Install from the registry used by your editor:
 
 | Model Entry | Image Handling | Thinking Effort |
 |---|---|---|
-| **Personal-AI** (`deepseek-v4-flash-vision-exp`) | Native image input | `none` / `low` / `high` / `max` |
+| **Personal-AI** (`personal-ai-flash-vision-exp`) | Native image input | `none` / `low` / `high` / `max` |
 
 The model supports thinking mode, tool calling, and 1M token context.
 
@@ -120,7 +120,7 @@ Example `settings.json` override for compatible API proxies:
 ```json
 {
   "personal-ai.modelIdOverrides": {
-    "deepseek-v4-flash-vision-exp": "your-model-id"
+    "personal-ai-flash-vision-exp": "your-model-id"
   }
 }
 ```
@@ -144,11 +144,12 @@ Example `settings.json` override for compatible API proxies:
 
 | 项目 | 原版 | 个人化改造 |
 |---|---|---|
-| **模型入口** | 4 个（V4.1 Flash / V4 Flash / V4 Pro / Flash Vision Exp） | 精简为 **1 个** `Personal-AI`（`deepseek-v4-flash-vision-exp`） |
+| **模型入口** | 4 个（V4.1 Flash / V4 Flash / V4 Pro / Flash Vision Exp） | 精简为 **1 个** `Personal-AI`（VS Code ID `personal-ai-flash-vision-exp`） |
 | **显示名称** | DeepSeek V4.1 Flash 等 | `Personal-AI` |
+| **模型 ID / family** | `deepseek-v4-flash-vision-exp` / `deepseek` | `personal-ai-flash-vision-exp` / `personal-ai`，与上游彻底区分，避免模型选择器歧义 |
 | **视觉处理** | 原生 + Vision Proxy 两种 | 仅**原生视觉**（`nativeImageInput: true`） |
 | **退役提示** | V4 系列会显示「已退役」警告 | 已移除 `LEGACY_MODEL_IDS`，不显示退役警告 |
-| **`modelIdOverrides`** | 4 个模型映射 | 仅 `deepseek-v4-flash-vision-exp` 一项 |
+| **`modelIdOverrides`** | 4 个模型映射 | 仅 `personal-ai-flash-vision-exp` 一项 |
 | **接入端点** | 官方 DeepSeek API | 可配置为自建 / 自托管 / 中转服务（`personal-ai.baseUrl`） |
 
 ### 对接自建服务的配置示例
@@ -160,7 +161,7 @@ Example `settings.json` override for compatible API proxies:
 
   // 模型 ID 覆盖（对接第三方兼容 API 时使用）
   "personal-ai.modelIdOverrides": {
-    "deepseek-v4-flash-vision-exp": "deepseek-v4-flash-vision-exp"
+    "personal-ai-flash-vision-exp": "deepseek-v4-flash-vision-exp"
   }
 }
 ```
@@ -180,6 +181,7 @@ Example `settings.json` override for compatible API proxies:
 | `565fe5f` | README language-switch links point to the personal repo |
 | `93a78f4` | Extension identity personalized: `name=personal-ai-copilot`, `displayName=Personal-AI for Copilot Chat` |
 | `cb6ecca` | **Config keys fully isolated**: `deepseek-copilot.*` → `personal-ai.*` (config/commands/secrets/i18n keys/vendor all renamed) |
+| *uncommitted* | **Model identity isolated**: VS Code model ID/family changed to `personal-ai-flash-vision-exp` / `personal-ai`; vision proxy webview `viewType` renamed to `personalAiVisionProxy`; `modelIdOverrides` key renamed with a legacy-key fallback |
 
 ### Important notes
 
@@ -193,7 +195,7 @@ Example `settings.json` override for compatible API proxies:
    {
      "personal-ai.baseUrl": "https://your-endpoint/v1",       // self-hosted endpoint
      "personal-ai.modelIdOverrides": {
-       "deepseek-v4-flash-vision-exp": "deepseek-v4-flash-vision-exp"
+       "personal-ai-flash-vision-exp": "deepseek-v4-flash-vision-exp"
      }
    }
    ```
@@ -202,10 +204,11 @@ Example `settings.json` override for compatible API proxies:
    - The project path **must not contain non-ASCII characters** (e.g. `G:\文档\...`), otherwise vsce's glob treats directories as files and fails with `not a file: out/client`. Package in an **ASCII path** (e.g. `G:\deepseek-build`) and copy the `.vsix` back
    - `@vscode/vsce` must be **≥ 3.9.2** (3.9.1 has a directory-collection bug)
    - For local packaging, add `--allow-package-all-secrets --allow-package-env-file` to bypass secretlint's Windows EISDIR issue
-   - Temporarily change `vscode:prepublish` from the bash version to `npm run compile` when packaging locally (no bash on Windows), then restore it
+   - `vscode:prepublish` is already `npm run compile` (Windows-friendly); no bash is required
 
-4. **Model ID**
-   - The model `id` remains `deepseek-v4-flash-vision-exp` (matches the actual vLLM model name). Only override it via `personal-ai.modelIdOverrides` when connecting to a third-party API with a different model name
+4. **Model IDs**
+   - VS Code model ID: `personal-ai-flash-vision-exp` (personal prefix, isolated from other DeepSeek providers)
+   - API model ID sent to the endpoint: `deepseek-v4-flash-vision-exp` by default (matches the actual vLLM model name). Override it via `personal-ai.modelIdOverrides` only when connecting to a third-party API with a different model name
 
 ## License
 

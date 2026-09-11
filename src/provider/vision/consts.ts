@@ -1,3 +1,5 @@
+import { PERSONAL_MODEL_ID } from '../../consts';
+
 /**
  * Upper bound for the vision proxy request timeout in milliseconds.
  *
@@ -8,8 +10,13 @@
  */
 export const MAX_TIMEOUT_MS = 2_147_483_647;
 
-/** Default model ID used for the vision proxy when auto-detection is enabled. */
-export const DEFAULT_VISION_MODEL_ID = 'deepseek-v4-flash-vision-exp';
+/**
+ * Default model ID used for the vision proxy when auto-detection is enabled.
+ *
+ * Sourced from `PERSONAL_MODEL_ID` so a model ID change cannot leave
+ * auto-detection pointing at a stale or foreign model.
+ */
+export const DEFAULT_VISION_MODEL_ID = PERSONAL_MODEL_ID;
 
 /**
  * Prompt sent to the vision proxy model when describing image attachments

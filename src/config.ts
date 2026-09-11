@@ -1,5 +1,5 @@
 import vscode from 'vscode';
-import { CONFIG_SECTION } from './consts';
+import { CONFIG_SECTION, LEGACY_MODEL_ID_ALIASES } from './consts';
 
 export type DebugMode = 'minimal' | 'metadata' | 'verbose';
 
@@ -28,7 +28,15 @@ export function getApiModelId(vscodeModelId: string): string {
 	const config = vscode.workspace.getConfiguration(CONFIG_SECTION);
 	const overrides = config.get<Record<string, string>>('modelIdOverrides');
 	const override = overrides?.[vscodeModelId]?.trim();
-	return override || vscodeModelId;
+	if (override) {
+		return override;
+	}
+
+	// Tolerate overrides saved under a legacy VS Code model ID, so a model ID
+	// rename cannot silently send an unknown model name to the API.
+	const legacyId = LEGACY_MODEL_ID_ALIASES[vscodeModelId];
+	const legacyOverride = legacyId ? overrides?.[legacyId]?.trim() : undefined;
+	return legacyOverride || vscodeModelId;
 }
 
 /**

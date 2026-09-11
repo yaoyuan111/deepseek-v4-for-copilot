@@ -26,8 +26,8 @@
   "personal-ai.config.debugMode.metadata.description": "隐私安全的元数据，可安全公开分享。使用 `Personal-AI: 显示日志` 查看。",
   "personal-ai.config.debugMode.verbose.label": "详细",
   "personal-ai.config.debugMode.verbose.description": "⚠️ 包含敏感的提示词内容，仅供本地调试。",
-  "personal-ai.config.modelIdOverrides.description": "覆盖各 DeepSeek 模型实际使用的 API 模型 ID，默认使用官方 DeepSeek ID，仅在对接不同模型名称的第三方 API 时需要修改。",
-  "personal-ai.config.modelIdOverrides.deepseek-v4-flash-vision-exp.description": "Personal-AI（DeepSeek V4 Flash Vision Exp）对应的 API 模型 ID",
+  "personal-ai.config.modelIdOverrides.description": "覆盖 Personal-AI 实际使用的 API 模型 ID。默认使用所配置端点的模型名，仅在对接要求不同模型名的第三方兼容 API 时需要修改。",
+  "personal-ai.config.modelIdOverrides.personal-ai-flash-vision-exp.description": "Personal-AI 对应的 API 模型 ID（VS Code 模型 ID：personal-ai-flash-vision-exp）",
   "personal-ai.config.visionModel.description": "为兼容原版扩展而保留。Personal-AI 不使用此项——该模型支持原生图片输入。可通过[配置视觉代理](command:personal-ai.setVisionModel)改用其他 VS Code 模型或 API 端点。",
   "personal-ai.config.visionPrompt.description": "为兼容原版扩展而保留。Personal-AI 不使用此项——该模型支持原生图片输入。\n\n[配置视觉代理](command:personal-ai.setVisionModel)"
 }

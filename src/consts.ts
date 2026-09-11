@@ -46,12 +46,33 @@ export const WALKTHROUGH_ID = 'yaoyuan111.personal-ai-copilot#deepseekGettingSta
 
 // ---- Model registry ----
 
-/** Available DeepSeek models exposed through the language model provider. */
+/**
+ * VS Code model ID prefix for models exposed by this extension.
+ *
+ * Keeps our model ID and family isolated from other DeepSeek providers, so both
+ * extensions can be installed side by side without model-picker ambiguity.
+ */
+export const MODEL_ID_PREFIX = 'personal-ai-';
+
+/** VS Code model ID of the single personalized model. */
+export const PERSONAL_MODEL_ID = `${MODEL_ID_PREFIX}flash-vision-exp`;
+
+/**
+ * Legacy VS Code model ID -> current VS Code model ID.
+ *
+ * `modelIdOverrides` is keyed by VS Code model ID, so an override saved before
+ * the ID was personalized would stop matching. This alias keeps it working.
+ */
+export const LEGACY_MODEL_ID_ALIASES: Readonly<Record<string, string>> = {
+	[PERSONAL_MODEL_ID]: 'deepseek-v4-flash-vision-exp',
+};
+
+/** Available models exposed through the language model provider. */
 export const MODELS: ModelDefinition[] = [
 	{
-		id: 'deepseek-v4-flash-vision-exp',
+		id: PERSONAL_MODEL_ID,
 		name: 'Personal-AI',
-		family: 'deepseek',
+		family: 'personal-ai',
 		version: 'v4',
 		detail: 'Personal-AI with native vision and thinking mode',
 		maxInputTokens: 655360,

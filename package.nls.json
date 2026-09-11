@@ -26,8 +26,8 @@
   "personal-ai.config.debugMode.metadata.description": "Privacy-safe metadata. Safe to share publicly. View with `Personal-AI: Show Logs`.",
   "personal-ai.config.debugMode.verbose.label": "Verbose",
   "personal-ai.config.debugMode.verbose.description": "⚠️ Contains sensitive prompt content. For local debugging only.",
-  "personal-ai.config.modelIdOverrides.description": "Override the API model ID sent for each DeepSeek model. Defaults are prefilled with official DeepSeek IDs; change them only when using a compatible third-party API that uses different model names.",
-  "personal-ai.config.modelIdOverrides.deepseek-v4-flash-vision-exp.description": "API model ID for Personal-AI (DeepSeek V4 Flash Vision Exp)",
+  "personal-ai.config.modelIdOverrides.description": "Override the API model ID sent for the Personal-AI model. Defaults to the model name served by the configured endpoint; change it only when using a compatible third-party API that expects a different model name.",
+  "personal-ai.config.modelIdOverrides.personal-ai-flash-vision-exp.description": "API model ID sent for the Personal-AI model (VS Code model ID: personal-ai-flash-vision-exp)",
   "personal-ai.config.visionModel.description": "Kept for compatibility with the original extension. Not used by Personal-AI — this model supports native image input. Configure a VS Code model or API endpoint with [Configure Vision Proxy](command:personal-ai.setVisionModel).",
   "personal-ai.config.visionPrompt.description": "Kept for compatibility with the original extension. Not used by Personal-AI — this model supports native image input.\n\n[Configure Vision Proxy](command:personal-ai.setVisionModel)"
 }

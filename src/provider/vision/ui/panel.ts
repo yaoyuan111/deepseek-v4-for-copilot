@@ -48,7 +48,7 @@ export function openVisionProxyPanel(
 
 	const store = new VisionProxyConfigStore(context);
 	const panel = vscode.window.createWebviewPanel(
-		'deepseekVisionProxy',
+		'personalAiVisionProxy',
 		t('vision.panel.title'),
 		vscode.ViewColumn.Active,
 		{

@@ -43,7 +43,7 @@
 ## 功能特性
 
 ### Personal-AI 出现在模型选择器中
-选择器包含单一 **Personal-AI** 入口（映射到 `deepseek-v4-flash-vision-exp`），支持长上下文、工具调用和可配置的思考强度。
+选择器包含单一 **Personal-AI** 入口（VS Code 模型 ID 为 `personal-ai-flash-vision-exp`），支持长上下文、工具调用和可配置的思考强度。
 
 ### 原生视觉
 **Personal-AI** 直接处理图片附件，不经过视觉代理。将图片拖入 Copilot Chat，模型即可直接响应。
@@ -96,7 +96,7 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
 
 | 模型入口 | 图片处理 | 思考强度 |
 |---|---|---|
-| **Personal-AI** (`deepseek-v4-flash-vision-exp`) | 原生图片输入 | `停用` / `轻量` / `标准` / `深度` |
+| **Personal-AI** (`personal-ai-flash-vision-exp`) | 原生图片输入 | `停用` / `轻量` / `标准` / `深度` |
 
 该模型支持思考模式、工具调用和 1M Token 上下文。
 
@@ -120,7 +120,7 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
 ```json
 {
   "personal-ai.modelIdOverrides": {
-    "deepseek-v4-flash-vision-exp": "your-model-id"
+    "personal-ai-flash-vision-exp": "your-model-id"
   }
 }
 ```
@@ -144,11 +144,12 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
 
 | 项目 | 原版 | 个人化改造 |
 |---|---|---|
-| **模型入口** | 4 个（V4.1 Flash / V4 Flash / V4 Pro / Flash Vision Exp） | 精简为 **1 个** `Personal-AI`（`deepseek-v4-flash-vision-exp`） |
+| **模型入口** | 4 个（V4.1 Flash / V4 Flash / V4 Pro / Flash Vision Exp） | 精简为 **1 个** `Personal-AI`（VS Code ID `personal-ai-flash-vision-exp`） |
 | **显示名称** | DeepSeek V4.1 Flash 等 | `Personal-AI` |
+| **模型 ID / family** | `deepseek-v4-flash-vision-exp` / `deepseek` | `personal-ai-flash-vision-exp` / `personal-ai`，与上游彻底区分，避免模型选择器歧义 |
 | **视觉处理** | 原生 + 视觉代理两种 | 仅**原生视觉**（`nativeImageInput: true`） |
 | **退役提示** | V4 系列会显示「已退役」警告 | 已移除 `LEGACY_MODEL_IDS`，不显示退役警告 |
-| **`modelIdOverrides`** | 4 个模型映射 | 仅 `deepseek-v4-flash-vision-exp` 一项 |
+| **`modelIdOverrides`** | 4 个模型映射 | 仅 `personal-ai-flash-vision-exp` 一项 |
 | **接入端点** | 官方 DeepSeek API | 可配置为自建 / 自托管 / 中转服务（`personal-ai.baseUrl`） |
 
 ### 对接自建服务的配置示例
@@ -160,7 +161,7 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
 
   // 模型 ID 覆盖（对接第三方兼容 API 时使用）
   "personal-ai.modelIdOverrides": {
-    "deepseek-v4-flash-vision-exp": "deepseek-v4-flash-vision-exp"
+    "personal-ai-flash-vision-exp": "deepseek-v4-flash-vision-exp"
   }
 }
 ```
@@ -180,6 +181,7 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
 | `565fe5f` | README 中英文切换链接指向个人仓库 |
 | `93a78f4` | 扩展标识个人化：`name=personal-ai-copilot`、`displayName=Personal-AI for Copilot Chat` |
 | `cb6ecca` | **配置键彻底隔离**：`deepseek-copilot.*` → `personal-ai.*`（配置/命令/密钥/i18n key/vendor 全部） |
+| *未提交* | **模型标识隔离**：VS Code 模型 ID/family 改为 `personal-ai-flash-vision-exp` / `personal-ai`；视觉代理 webview `viewType` 改为 `personalAiVisionProxy`；`modelIdOverrides` 键名同步并保留旧键兼容回退 |
 
 ### 重要注意点
 
@@ -193,7 +195,7 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
    {
      "personal-ai.baseUrl": "https://your-endpoint/v1",       // 自建端点
      "personal-ai.modelIdOverrides": {
-       "deepseek-v4-flash-vision-exp": "deepseek-v4-flash-vision-exp"
+       "personal-ai-flash-vision-exp": "deepseek-v4-flash-vision-exp"
      }
    }
    ```
@@ -202,10 +204,11 @@ API Key 存储在 VS Code 的 `SecretStorage` 中（macOS 钥匙串 / Windows �
    - 项目路径**不能含中文**（如 `G:\文档\...`），否则 vsce 的 glob 会把目录当文件，报 `not a file: out/client`。请在 **ASCII 路径**（如 `G:\deepseek-build`）下打包，再复制 `.vsix` 回来
    - `@vscode/vsce` 需 **≥ 3.9.2**（3.9.1 有目录收集 bug）
    - 本地打包建议加 `--allow-package-all-secrets --allow-package-env-file` 绕过 secretlint 的 Windows EISDIR 问题
-   - 本地打包时需临时将 `vscode:prepublish` 从 bash 版改为 `npm run compile`（Windows 无 bash），打包后恢复
+   - `vscode:prepublish` 已是 `npm run compile`（Windows 友好），无需 bash
 
-4. **模型 ID 预留说明**
-   - 模型 `id` 仍为 `deepseek-v4-flash-vision-exp`（与 vLLM 实际模型名一致，请勿修改，除非对接的第三方 API 模型名不同才需通过 `personal-ai.modelIdOverrides` 覆盖）
+4. **模型 ID 说明**
+   - **VS Code 模型 ID**：`personal-ai-flash-vision-exp`（个人前缀，与其他 DeepSeek 提供方隔离）
+   - **实际请求的 API 模型 ID**：默认 `deepseek-v4-flash-vision-exp`（与 vLLM 实际模型名一致，请勿修改，除非对接的第三方 API 模型名不同才需通过 `personal-ai.modelIdOverrides` 覆盖）
 
 ## 许可证
 

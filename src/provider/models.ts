@@ -1,4 +1,5 @@
 import vscode from 'vscode';
+import { MODEL_ID_PREFIX } from '../consts';
 import { t } from '../i18n';
 import type {
 	ModelDefinition,
@@ -130,7 +131,9 @@ function isSupportedReasoningEffort(
 }
 
 function resolveModelText(m: ModelDefinition, field: 'detail' | 'tooltip'): string | undefined {
-	const suffix = m.id.startsWith('deepseek-v4-') ? m.id.slice('deepseek-v4-'.length) : m.id;
+	// i18n keys are derived from the model ID suffix, e.g.
+	// `personal-ai-flash-vision-exp` -> `model.flash-vision-exp.detail`.
+	const suffix = m.id.startsWith(MODEL_ID_PREFIX) ? m.id.slice(MODEL_ID_PREFIX.length) : m.id;
 	const key = `model.${suffix}.${field}`;
 	const translated = t(key);
 	return translated !== key ? translated : undefined;
